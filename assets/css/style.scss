@@ -13,6 +13,18 @@ body{
     family: $font-set;
   }
 }
+ul{
+  list-style: none;
+}
+form{
+}
+input{
+  background: #000;
+  padding: 24px 16px;
+  display: block;
+  width: 100%;
+}
 #container{
   max-width: $width;
+  margin: 0 auto;
 }

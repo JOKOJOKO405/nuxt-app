@@ -11,7 +11,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&family=Oxygen:wght@300;700&display=swap'}
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400&family=Oxygen:wght@300;700&display=swap'}
     ]
   },
 
