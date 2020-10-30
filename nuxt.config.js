@@ -34,7 +34,8 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    ['@nuxtjs/moment', ['ja']]
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
