@@ -3,7 +3,7 @@ import { firestoreAction } from 'vuexfire'
 
 // データベース
 const db = firebase.firestore();
-const todoRef = db.collection('todos')
+const todoRef = db.collection('my-todos')
 
 export const state = function(){
   todos: []
@@ -42,8 +42,8 @@ export const actions = {
   }),
 }
 
-export const getter = {
-  oerderedDate: state => {
+export const getters = {
+  orderedDate: state => {
     return _.sortBy(state.todos, 'date')
   }
 }
