@@ -2,8 +2,12 @@
     <div id="container">
       <h1>MY TODO</h1>
       <ul>
-        <li v-for="todo in todos">
-          <input type="checkbox" @change="toggled" :checked="todo.done" id="">  <span :class="{ done: todo.done }">{{ todo.task }} {{ todo.date }} </span><button @click="deleteTodo">del</button>
+        <li v-for="todo in todos" :key="todo.id">
+          <p :class="{ done: todo.done }">
+            <input type="checkbox" v-model="todo.done" :checked="todo.done" id=""> 
+            {{ todo.task }} {{ todo.date }} 
+          </p>
+          <button @click="deleteTodo">del</button>
         </li>
       </ul>
         <form>
@@ -54,7 +58,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .done{
   text-decoration: line-through !important;
 }
