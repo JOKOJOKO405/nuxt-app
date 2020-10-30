@@ -14,7 +14,7 @@ export const actions = {
   init: firestoreAction(({ bindFirestoreRef }) => {
     bindFirestoreRef('todos', todoRef)
   }),
-  add: firestoreAction((action, task, limit='') => {
+  add: firestoreAction((action, task, limit) => {
     if(task.trim().length){
       todoRef.add({
         task: task,

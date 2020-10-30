@@ -4,14 +4,15 @@
       <ul>
         <li v-for="todo in todos" :key="todo.id">
           <p :class="{ done: todo.done }">
-            <input type="checkbox" v-model="todo.done" :checked="todo.done" id=""> 
-            {{ todo.task }} {{ todo.date.toDate() | dateFilter }} 
+            <input type="checkbox" @change="toggled(todo)" :checked="todo.done" id=""> 
+            {{ todo.task }} {{ todo.date.toDate() | dateFilter }} {{ todo.limit }}
           </p>
-          <button @click.prevent="deleteTodo">del</button>
+          <button @click.prevent="deleteTodo(todo.id)">del</button>
         </li>
       </ul>
         <form @submit.prevent="addTodo">
         <input type="text" v-model="input">
+        <input type="date" v-model="limit">
         <!-- <button>add</button> -->
         <v-app>
           <v-btn
@@ -19,6 +20,7 @@
   elevation="2"
   rounded
   x-large
+  @click.prevent="addTodo"
 >ADD TODO</v-btn>
         </v-app>
       </form>
@@ -31,19 +33,23 @@ export default {
   data: function(){
     return {
       input: '',
+      limit: '',
     }
   },
   methods: {
     addTodo: function(){
-      this.$store.dispatch('todolist/add', this.input)
+      this.$store.dispatch('todolist/add', this.input, this.limit);
       this.input = ''
     },
     deleteTodo: function(id){
       this.$store.dispatch('todolist/delete', id)
     },
     toggled: function(todo){
-      this.$store.dispatch('todolist/toggle', todo)
-    }
+      this.$store.dispatch('todolist/toggled', todo)
+    },
+    modify: function(id){
+      this.$store.dispatch('todolist/modify', id, this.input, this.limit)
+    },
   },
   computed: {
     todos(){
@@ -53,7 +59,7 @@ export default {
   filters: {
     dateFilter: function(date){
       return moment(date).format('YYYY-MM-DD')
-    }
+    },
   },
   created: function(){
     this.$store.dispatch('todolist/init');
