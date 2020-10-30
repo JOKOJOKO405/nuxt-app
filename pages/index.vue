@@ -13,6 +13,7 @@
         <form @submit.prevent="addTodo">
         <input type="text" v-model="input">
         <input type="date" v-model="limit">
+        <p v-model="limit">{{ limit }}</p>
         <!-- <button>add</button> -->
         <v-app>
           <v-btn

@@ -21,7 +21,7 @@ export const actions = {
         done: false,
         date: firebase.firestore.FieldValue.serverTimestamp(),
         modify: false,
-        limit: limit
+        limit: firebase.firestore.Timestamp.fromDate(limit)
       })
     }
   }),
