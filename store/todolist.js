@@ -14,14 +14,14 @@ export const actions = {
   init: firestoreAction(({ bindFirestoreRef }) => {
     bindFirestoreRef('todos', todoRef)
   }),
-  add: firestoreAction((action, task, limit) => {
+  add: firestoreAction((action, [task, limit]) => {
     if(task.trim().length){
       todoRef.add({
         task: task,
         done: false,
         date: firebase.firestore.FieldValue.serverTimestamp(),
         modify: false,
-        limit: firebase.firestore.Timestamp.fromDate(limit)
+        limit: limit
       })
     }
   }),
@@ -33,7 +33,7 @@ export const actions = {
       done: !todo.done
     })
   }),
-  modify: firestoreAction((action, id, newTask, newLimit) => {
+  modify: firestoreAction((action, [id, newTask, newLimit]) => {
     todoRef.doc(id).update({
       task: newTask,
       modify: false,
