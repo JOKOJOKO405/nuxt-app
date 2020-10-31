@@ -2,3 +2,16 @@ input{
   border: 1px solid #000;
   background: #ccc;
 }
+.theme--light.v-input input, .theme--light.v-input textarea{
+}
+.theme--light.v-icon{
+  color: #4caf50;
+}
+.v-input--selection-controls__ripple,
+.v-input--selection-controls{
+  margin: 0;
+}
+.flex{
+  display: flex;
+  align-items: center;
+}

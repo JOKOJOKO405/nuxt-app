@@ -18,13 +18,11 @@ ul{
 }
 form{
 }
-input{
-  background: #000;
-  padding: 24px 16px;
-  display: block;
-  width: 100%;
-}
 #container{
   max-width: $width;
-  margin: 0 auto;
+  margin: 100px auto;
+}
+h1{
+  text-align: center;
+  font-size: 48px;
 }
