@@ -30,8 +30,12 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     '@nuxtjs/vuetify',
+    
   ],
-
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    treeShake: true
+  },
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/dotenv',

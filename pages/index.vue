@@ -89,7 +89,7 @@ export default {
 </script>
 
 <style lang="scss">
-.done{
+.done {
   text-decoration: line-through !important;
 }
 </style>
