@@ -6,15 +6,24 @@
           <div v-if="todo.date">
             <p :class="{ done: todo.done }">
             <input type="checkbox" @change="toggled(todo)" :checked="todo.done" id=""> 
-            {{ todo.task }} {{ todo.date.toDate() | dateFilter }} {{ todo.limit }}
-          </p>
+            </p>
+            <p @click="modifyShow(todo)">
+              {{ todo.task }}
+              {{ todo.date.toDate() | dateFilter }}
+            </p>
+            <p v-if="todo.modify">
+              <input type="text" v-model="newInput">
+              <input type="datetime-local" v-model="newLimit">
+              <button @click.prevent="modify(todo.id)">modify</button>
+            </p>
+            {{ todo.limit | dateFilter }}
           <button @click.prevent="deleteTodo(todo.id)">del</button>
           </div>
         </li>
       </ul>
         <form @submit.prevent="addTodo">
         <input type="text" v-model="input">
-        <input type="date" v-model="limit">
+        <input type="datetime-local" v-model="limit">
         <!-- <button>add</button> -->
         <v-app>
           <v-btn
@@ -36,6 +45,9 @@ export default {
     return {
       input: '',
       limit: '',
+      index: '',
+      newInput: '',
+      newLimit: '',
     }
   },
   methods: {
@@ -50,8 +62,15 @@ export default {
       this.$store.dispatch('todolist/toggled', todo)
     },
     modify: function(id){
-      this.$store.dispatch('todolist/modify', [id, this.input, this.limit])
+      this.$store.dispatch('todolist/modify', [id, this.newInput, this.newLimit])
+      this.newInput = '';
     },
+    modifyShow: function(todo) {
+      this.$store.dispatch('todolist/show', todo)
+    },
+    allCheck: function(todo) {
+      this.$store.dispatch('todolist/allCheck', todo)
+    }
   },
   computed: {
     todos(){
@@ -60,7 +79,7 @@ export default {
   },
   filters: {
     dateFilter: function(date){
-      return moment(date).format('YYYY-MM-DD HH:mm:ss')
+      return moment(date).format('YYYY.MM.DD HH:mm:ss')
     },
   },
   created: function(){

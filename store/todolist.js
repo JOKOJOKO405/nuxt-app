@@ -34,10 +34,17 @@ export const actions = {
     })
   }),
   modify: firestoreAction((action, [id, newTask, newLimit]) => {
-    todoRef.doc(id).update({
-      task: newTask,
-      modify: false,
-      limit: newLimit,
+    if(newTask.trim().length){
+      todoRef.doc(id).update({
+        task: newTask,
+        modify: false,
+        limit: newLimit,
+      })
+    }
+  }),
+  show: firestoreAction((action, todo) => {
+    todoRef.doc(todo.id).update({
+      modify: !todo.modify
     })
   }),
 }
