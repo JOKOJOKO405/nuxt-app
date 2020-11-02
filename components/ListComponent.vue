@@ -1,10 +1,13 @@
 <template>
   <div>
     <h1>MY TODO</h1>
+    <select v-model.number="sort">
+            <option value="1" selected>作成日順</option>
+            <option value="2">期限日順</option>
+          </select>
     <ul>
       <li v-for="todo in todos" :key="todo.id">
-        <div v-if="todo.date">
-          <div :class="{ done: todo.done }">
+        <template v-if="todo.date">
             <div class="list__container">
               <div class="list__checkBox">
                 <v-checkbox
@@ -40,8 +43,7 @@
                 modify
               </button>
             </div>
-          </div>
-        </div>
+        </template>
       </li>
     </ul>
   </div>
@@ -57,6 +59,7 @@ export default {
       index: "",
       newInput: "",
       newLimit: "",
+      sort: 1,
     };
   },
   methods: {
@@ -75,12 +78,25 @@ export default {
       this.newInput = "";
     },
     modifyShow: function (todo) {
+      this.newInput = todo.task;
+      this.newLimit = todo.limit;
       this.$store.dispatch("todolist/show", todo);
+      this.newInput = "";
+      this.newLimit = "";
     },
   },
   computed: {
     todos() {
-      return this.$store.getters["todolist/orderedDate"];
+      switch (this.sort) {
+        case 1:
+          return this.$store.getters["todolist/orderedDate"];
+          break;
+        case 2:
+          return this.$store.getters["todolist/orderedLimit"];
+          break;
+        default:
+          break;
+      }
     },
   },
   filters: {

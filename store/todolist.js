@@ -53,4 +53,7 @@ export const getters = {
   orderedDate: state => {
     return _.sortBy(state.todos, 'date')
   },
+  orderedLimit: state => {
+    return _.sortBy(state.todos, 'limit')
+  },
 }
