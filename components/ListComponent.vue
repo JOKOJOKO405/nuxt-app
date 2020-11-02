@@ -5,26 +5,42 @@
       <li v-for="todo in todos" :key="todo.id">
         <div v-if="todo.date">
           <div :class="{ done: todo.done }">
-            <div class="flex">
-              <v-checkbox
-                :checked="todo.done"
-                @change="toggled(todo)"
-                hide-details
-              ></v-checkbox>
-
-              <p @click="modifyShow(todo)">
-                {{ todo.task }}
+            <div class="list__container">
+              <div class="list__checkBox">
+                <v-checkbox
+                  :checked="todo.done"
+                  @change="toggled(todo)"
+                  hide-details
+                ></v-checkbox>
+              </div>
+              <!-- /.list__checkBox -->
+              <div class="list__tasks">
+                <p @click="modifyShow(todo)">
+                  {{ todo.task }}
+                </p>
+              </div>
+              <!-- /.list__tasks -->
+              <div class="list__date">
                 {{ todo.date.toDate() | dateFilter }}
-              </p>
+              </div>
+              <!-- /.list__date -->
+              <div class="list__limit">
+                <span>LIMIT</span> {{ todo.limit | dateFilter }}
+              </div>
+              <!-- /.list__limit -->
+              <button class="list__btn" @click.prevent="deleteTodo(todo.id)">
+                del
+              </button>
+            </div>
+            <!-- /.list__container -->
+            <div class="list__modifyContainer" v-if="todo.modify">
+              <input type="text" v-model="newInput" />
+              <input type="datetime-local" v-model="newLimit" />
+              <button class="list__btn" @click.prevent="modify(todo.id)">
+                modify
+              </button>
             </div>
           </div>
-          <p v-if="todo.modify">
-            <input type="text" v-model="newInput" />
-            <input type="datetime-local" v-model="newLimit" />
-            <button @click.prevent="modify(todo.id)">modify</button>
-          </p>
-          {{ todo.limit | dateFilter }}
-          <button @click.prevent="deleteTodo(todo.id)">del</button>
         </div>
       </li>
     </ul>
@@ -61,9 +77,6 @@ export default {
     modifyShow: function (todo) {
       this.$store.dispatch("todolist/show", todo);
     },
-    // allCheck: function(todo) {
-    //   this.$store.dispatch('todolist/allCheck', todo)
-    // }
   },
   computed: {
     todos() {

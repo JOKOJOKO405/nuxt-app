@@ -52,5 +52,5 @@ export const actions = {
 export const getters = {
   orderedDate: state => {
     return _.sortBy(state.todos, 'date')
-  }
+  },
 }

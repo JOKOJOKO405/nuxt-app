@@ -1,13 +1,21 @@
+@import '~/assets/css/_variables';
+
 input{
-  border: 1px solid #000;
-  background: #ccc;
+  padding: 16px;
+  display: inline-block;
+  border: 1px solid $color-mid-gray;
+  background: #fff;
+  border-radius: 4px;
 }
-.theme--light.v-input input, .theme--light.v-input textarea{
-}
+// .theme--light.v-input input, .theme--light.v-input textarea{
+// }
 .theme--light.v-icon{
-  color: #4caf50;
+  color: $color-primary;
 }
-.v-input--selection-controls__ripple,
-.v-input--selection-controls{
-  margin: 0;
+// .v-input--selection-controls__ripple,
+// .v-input--selection-controls{
+// }
+
+.v-btn__content{
+  color: #fff;
 }

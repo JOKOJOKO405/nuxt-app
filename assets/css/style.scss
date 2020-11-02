@@ -1,32 +1,144 @@
-@import 'variables';
+@import "variables";
 
 *,
 *::before,
-*::after{
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-body{
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  position: relative;
   font: {
     family: $font-set;
+    size: 15px;
+  }
+  color: $color-base-gray;
+}
+ul {
+  list-style: none;
+  li {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-light-gray;
   }
 }
-ul{
-  list-style: none;
+
+.form {
+  width: $width;
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 64px 32px;
+  &__container{
+    display: flex;
+    margin-bottom: 32px;
+  }
+  &__task{
+    width: 70%;
+    margin-right: 16px;
+  }
+  &__limit{
+    width: calc(30% - 16px);
+  }
+  &__btn{
+    width: 320px;
+    margin: 0 auto;
+    button{
+      width: 100%;
+      padding: 16px;
+      font-weight: bold;
+      border-radius: 40px;
+      display: block;
+      background: $color-primary;
+      text-align: center;
+      color: #fff;
+    }
+  }
 }
-form{
-}
-#container{
+#container {
   max-width: $width;
   margin: 100px auto;
 }
-h1{
+h1 {
   text-align: center;
   font-size: 48px;
+  margin-bottom: 48px;
 }
-.flex{
-  display: flex;
-  align-items: center;
+.list {
+  &__container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  &__tasks {
+    font-size: 16px;
+    margin-right: 16px;
+    margin-top: 16px;
+  }
+  &__date {
+    font-size: 14px;
+    color: $color-mid-gray;
+    margin-right: 16px;
+    margin-top: 16px;
+  }
+  &__limit {
+    margin-right: 16px;
+    margin-top: 16px;
+    color: $color-mid-gray;
+    span{
+      background: $color-primary;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      font-size: 14px;
+      padding: 2px 8px;
+    }
+  }
+  &__btn{
+    background: $color-secondary;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 16px;
+    padding: 2px 16px;
+    border-radius: 4px;
+  }
+  &__modifyContainer{
+    padding: 24px;
+    margin-top: 16px;
+    background: $color-base;
+    display: flex;
+    input{
+      margin-right: 16px;
+      width: 40%;
+      padding: 10px;
+    }
+    .list__btn{
+      margin-top: 0;
+    }
+  }
+}
+.edit{
+  &__btn{
+    position: absolute;
+    bottom: 80px;
+    right: 80px;
+    width: 80px;
+    height: 80px;
+    background: $color-primary;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 30px 0 rgba(9, 92, 9, 0.2);
+  }
+}
+
+input[type="datetime-local"],
+input[type="datetime-local" i]{
+  color: $color-mid-gray;
 }
