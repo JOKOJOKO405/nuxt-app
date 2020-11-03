@@ -19,7 +19,9 @@
               <!-- /.list__checkBox -->
               <div class="list__tasks">
                 <p @click="modifyShow(todo)">
+                  <span :class="{ done: todo.done }">
                   {{ todo.task }}
+                  </span>
                 </p>
               </div>
               <!-- /.list__tasks -->

@@ -15,7 +15,7 @@ export const actions = {
     bindFirestoreRef('todos', todoRef)
   }),
   add: firestoreAction((action, [task, limit]) => {
-    if(task.trim().length){
+    if(task.trim().length && limit !==''){
       todoRef.add({
         task: task,
         done: false,
@@ -34,7 +34,7 @@ export const actions = {
     })
   }),
   modify: firestoreAction((action, [id, newTask, newLimit]) => {
-    if(newTask.trim().length){
+    if(newTask.trim().length && newLimit !== ''){
       todoRef.doc(id).update({
         task: newTask,
         modify: false,
