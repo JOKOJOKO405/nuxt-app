@@ -11,14 +11,12 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400&family=Oxygen:wght@300;700&display=swap|Material+Icons'}
     ]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     '@/assets/css/style.scss',
-    "@mdi/font/css/materialdesignicons.css"
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -50,6 +48,9 @@ export default {
         // グローバルなモジュール
         _: 'lodash',
       })
-    ]
+    ],
+    extend(config) {
+      config.performance.maxAssetSize = 90000000;
+    }
   }
 }
