@@ -49,8 +49,10 @@ export default {
         _: 'lodash',
       })
     ],
-    extend (config, ctx) {
-      config.performance.maxAssetSize = 1000 * 1024
-    }
+    extend (config) {
+      config.performance = config.performance || {}
+      config.performance.maxEntrypointSize = 3000 * 1024
+      config.performance.maxAssetSize = 3000 * 1024
+    },
   }
 }
