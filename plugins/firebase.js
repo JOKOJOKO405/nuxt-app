@@ -1,5 +1,6 @@
 import firebase from 'firebase/app'
 import 'firebase/app'
+import 'firebase/firestore'
 
 // .envからfirebaseのIDを取得
 const config = {
