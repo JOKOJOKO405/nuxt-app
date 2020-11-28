@@ -26,7 +26,9 @@ export const actions = {
     }
   }),
   delete: firestoreAction((action, id) =>{
-    todoRef.doc(id).delete();
+    if(confirm('削除しますか？')){
+      todoRef.doc(id).delete();
+    }
   }),
   toggled: firestoreAction((action, todo) => {
     todoRef.doc(todo.id).update({
